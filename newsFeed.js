@@ -40,7 +40,13 @@ myclick('01')
 
 const cardFeture = (cardDetails) =>{
     
-    // console.log(cardDetails)
+    console.log(cardDetails)
+    const warning = document.getElementById('warning')
+    if(cardDetails.length === 0){
+      warning.classList.remove('d-none')
+    } else{
+        warning.classList.add('d-none')
+    }
 
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
