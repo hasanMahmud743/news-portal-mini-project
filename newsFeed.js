@@ -44,11 +44,15 @@ myclick('01')
 
 const cardFeture = (cardDetails) =>{
     
-    console.log(cardDetails.length)
+    // array sorting
+    
+    const sort = cardDetails.sort((a, b) => {
+        return (b.total_view - a.total_view)
+    })
+    
 
     const notification = document.getElementById('qty')
     notification.innerText = cardDetails.length
-
     const warning = document.getElementById('warning')
      
     if(cardDetails.length === 0){
@@ -106,7 +110,7 @@ const cardFeture = (cardDetails) =>{
                                 <img class="author-img mx-3" src="${cardDetail.author.img}" alt="">
 
                                 <div class="lh-sm">
-                                    <p class="lh-1 fw-bold">${cardDetail.author?.name || 'No Author Found'}</p>
+                                    <p class="lh-1 fw-bold">${cardDetail.author?.name || 'No Author found'}</p>
                                     <p class="lh-1">${cardDetail.author.published_date}</p>
                                 </div>
                             
