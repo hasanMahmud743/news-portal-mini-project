@@ -8,9 +8,6 @@ document.getElementById('news-btn').addEventListener('click', function(){
 })
 
 
-
-
-
 const news = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
@@ -19,21 +16,20 @@ const news = () =>{
 }
 
 const catagory = datas =>{
-    console.log(datas.category_name)
+   
 
-    for(const data of datas){
-        // console.log(data.category_name)
+    
+    datas.forEach(data => {
+
         const heading = document.getElementById('news-heading')
-        // console.log(heading)
         const creatDiv = document.createElement('a')
         const ternary = data.category_id
 
         creatDiv.innerHTML = `
         <a class="catagory-link"  onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
         `
-       
         heading.appendChild(creatDiv)
-    }
+    })
 }
 
 
@@ -44,7 +40,7 @@ news()
 
 const myclick = (catId, titleName) =>{
     spinner(true)
-    console.log(titleName)
+    
 
     fetch(`https://openapi.programming-hero.com/api/news/category/${catId}`)
     .then(res => res.json())
@@ -52,7 +48,6 @@ const myclick = (catId, titleName) =>{
     .catch(error => console.log(error))
 }
 spinner(true)
-
 
 myclick('01')
 
@@ -65,7 +60,6 @@ const cardFeture = (cardDetails) =>{
         return (b.total_view - a.total_view)
     })
     
-
     const notification = document.getElementById('qty')
     notification.innerText = cardDetails.length
     const warning = document.getElementById('warning')
@@ -77,28 +71,17 @@ const cardFeture = (cardDetails) =>{
         warning.classList.add('d-none')
     }
 
-
-    
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
 
-
-    for(const cardDetail of cardDetails){
+    cardDetails.forEach( cardDetail =>{
       
-        console.log(cardDetail)
-    
-
-        
-
         const creat = document.createElement('div')
         const details = cardDetail.details
         const shortArr = details.split(' ')
         const short = shortArr.slice(0, 40)
         const join = short.join(' ')
 
-        
-
-        // console.log(join)
         creat.innerHTML = `
         <div class=" shadow rounded-3 my-5 p-4">
              <div class="row">
@@ -162,7 +145,7 @@ const cardFeture = (cardDetails) =>{
         cardId.appendChild(creat)
 
       
-    }
+    })
     spinner(false)
 }
 
@@ -177,7 +160,7 @@ const modalOn = data =>{
 }
 
 const modalDisplay = (details) =>{
-    console.log(details)
+    
     const modalId = document.getElementById('modal-id')
     modalId.innerText = details.author?.name || 'No author found'
 
@@ -191,7 +174,7 @@ const modalDisplay = (details) =>{
 
 
 
-
+// spinner function
 
 function spinner(isSpinnig){
     const spinner = document.getElementById('spinner')

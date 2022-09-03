@@ -25,11 +25,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <!-- inline css start here -->
+
+
+    <!-- internal css start here -->
     <style>
         body{
              font-family: 'Poppins', sans-serif;
-;
+
         }
 
         .catagory-link{
@@ -48,7 +50,11 @@
         }
     </style>
 
-    <!-- inline css ends here -->
+    <!-- internal css ends here -->
+
+
+
+
 
 </head>
 <body class="container">
@@ -88,25 +94,28 @@
     </header>
 
     <main>
-
-      
-     
-
+        <!-- news header container start here -->
         <section>
             <div id="news-heading" class="d-flex fw-bold text-muted flex-column flex-md-row  text-center my-1 justify-content-between" >
 
             </div>
         </section>
+        <!-- news header container ends here -->
 
+
+
+        <!-- qty section start here -->
         <section>
           <div class=" shadow-sm fs-5 pt-3 pb-2 my-5 ps-2 rounded-3 text-muted  ">
             <p> <span id="qty"></span> item found for this catagory... </p>
           </div>
-        
-
-
         </section>
-  
+
+        <!-- qty section ends here -->
+
+
+
+        <!-- spinner section start here -->
 
         <div id="spinner" style="height:400px ;" class="d-flex d-none align-items-center justify-content-center py-5">
           <div class="spinner-border" role="status">
@@ -114,14 +123,24 @@
           </div>
         </div>
 
+        <!-- spinner section ends here -->
+
+
+
+        <!-- error shower start here -->
+
         <section style="height:70vh ;" id="warning" class=" d-flex   justify-content-center align-items-center d-none">
           <h3 class="text-center fw-bold">No update News for this time. Try again letter...</h3>
         </section>
 
+        <!-- error shower ends here -->
+
+
         <section>
 
 
-      <!-- Modal -->
+      <!-- Modal start here -->
+
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -142,27 +161,35 @@
         </div>
       </section>
 
-
-        <section>
-
-            <div id="card-id">
-
-            </div>
+      <!-- modal ends here -->
 
 
 
-        </section>
-        
+      <!-- card element section start here -->
 
+      <section>
+          <div id="card-id">
+          </div>
+      </section>
+
+      <!-- card element section ends here -->
 
     </main>
+
+
+
+
+    <!-- footer section start here -->
 
     <footer>
       <hr>
       <p class="text-center fw-bold">@copyrigt 2021 ||  all right resurved of stay update</p>
     </footer>
 
+    <!-- footer section ends here -->
 
+
+<!------------------------------------------------------------>
 
     <!-- js link -->
     <script src="newsFeed.js"></script>
