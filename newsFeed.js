@@ -135,7 +135,7 @@ const cardFeture = (cardDetails) =>{
                                     <i class="fa-solid fa-star-half"></i>
                                 </p>
                                 
-                                <a class="ms-auto " href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="ms-auto" onclick="modalOn('${cardDetail._id}')"  href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
                                     
                                 
                             </div>
@@ -148,7 +148,7 @@ const cardFeture = (cardDetails) =>{
                                 <i class="fa-solid fa-star-half"></i>
                             </p>
 
-                            <a onclick="modalOn('${cardDetail._id}')" class=" d-none d-md-block " data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                            <a onclick="modalOn('${cardDetail._id}')" class=" d-none d-md-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
                                     
                     </div>
                 </div>
