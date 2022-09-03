@@ -1,4 +1,4 @@
-
+// page link
 document.getElementById('blog-btn').addEventListener('click', function(){
     window.location.href = "http://127.0.0.1:5500/blog.html#" 
 })
@@ -15,19 +15,21 @@ const news = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(data => catagory(data.data.news_category))
+    .catch(error => console.log(error))
 }
 
 const catagory = datas =>{
-    // console.log(datas.category_name)
+    console.log(datas.category_name)
 
     for(const data of datas){
-        console.log(data.category_name)
+        // console.log(data.category_name)
         const heading = document.getElementById('news-heading')
         // console.log(heading)
         const creatDiv = document.createElement('a')
-        const ternary = data.category_id || 01
+        const ternary = data.category_id
+
         creatDiv.innerHTML = `
-        <a class="catagory-link" onclick="colorClick()" onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
+        <a class="catagory-link"  onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
         `
        
         heading.appendChild(creatDiv)
@@ -40,14 +42,14 @@ news()
 
 
 
-const myclick = (catId) =>{
+const myclick = (catId, titleName) =>{
     spinner(true)
-    // console.log(catId)
+    console.log(titleName)
 
     fetch(`https://openapi.programming-hero.com/api/news/category/${catId}`)
     .then(res => res.json())
     .then(data => cardFeture(data.data))
-    
+    .catch(error => console.log(error))
 }
 spinner(true)
 
@@ -80,17 +82,9 @@ const cardFeture = (cardDetails) =>{
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
 
-    // let emArr = []
 
-    // for(total of cardDetails){
-    //     emArr.push(total.total_view) 
-    // }
-    // emArr.sort((a,b) => b-a)
-    
-    // console.log(emArr)
     for(const cardDetail of cardDetails){
-        // const sort = cardDetail.total_view.sort((a,b)=> b-a)
-        // console.log(sort)
+      
         console.log(cardDetail)
     
 
@@ -106,7 +100,7 @@ const cardFeture = (cardDetails) =>{
 
         // console.log(join)
         creat.innerHTML = `
-        <div class="card rounded-3 my-5 p-4">
+        <div class=" shadow rounded-3 my-5 p-4">
              <div class="row">
                 <div class="col-md-5">
                     <img class="card-img" src=" ${cardDetail.image_url}" alt="">
@@ -154,7 +148,7 @@ const cardFeture = (cardDetails) =>{
                                 <i class="fa-solid fa-star-half"></i>
                             </p>
 
-                            <a class=" d-none d-md-block " data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                            <a onclick="modalOn('${cardDetail._id}')" class=" d-none d-md-block " data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
                                     
                     </div>
                 </div>
@@ -163,18 +157,35 @@ const cardFeture = (cardDetails) =>{
         
 
          </div>
-        `
-        const modalBody = document.getElementById('modal-body')
-        modalBody.innerText = `ID : ${cardDetail._id}`
-
-        const modalTitle = document.getElementById('modal-id')
-        modalTitle.innerText  = ` Title: ${cardDetail.title}`
-        
+         `
 
         cardId.appendChild(creat)
 
       
     }
+    spinner(false)
+}
+
+// modal handler here
+
+const modalOn = data =>{
+    spinner(true)
+    fetch(`https://openapi.programming-hero.com/api/news/${data}`)
+    .then(res => res.json())
+    .then(data => modalDisplay(data.data[0]))
+    .catch(error => console.log(error))
+}
+
+const modalDisplay = (details) =>{
+    console.log(details)
+    const modalId = document.getElementById('modal-id')
+    modalId.innerText = details.author?.name || 'No author found'
+
+    const modalBody = document.getElementById('modal-body')
+    modalBody.innerHTML = `
+        <h5 class="fw-bold"> ${details.title} </h5>
+        <p class="text-muted"> ${details.details} </p>
+    `
     spinner(false)
 }
 
