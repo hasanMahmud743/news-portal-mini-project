@@ -50,7 +50,8 @@ const cardFeture = (cardDetails) =>{
 
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
-    let emArr = []
+
+    // let emArr = []
 
     // for(total of cardDetails){
     //     emArr.push(total.total_view) 
@@ -83,12 +84,12 @@ const cardFeture = (cardDetails) =>{
                     <img class="card-img" src=" ${cardDetail.image_url}" alt="">
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-7 mt-4 mt-md-auto">
                         <h4 class="fw-bold"> ${cardDetail.title} </h4>
                         <p> ${join} ...</p>
 
 
-                        <div class="d-flex pt-4 justify-content-between" >
+                        <div class="d-flex flex-column  flex-md-row pt-4 justify-content-between" >
 
                             <div class="d-flex "> 
                                 <img class="author-img mx-3" src="${cardDetail.author.img}" alt="">
@@ -98,18 +99,35 @@ const cardFeture = (cardDetails) =>{
                                     <p class="lh-1">${cardDetail.author.published_date}</p>
                                 </div>
                             
+                            </div >
+
+                            <p class="text-center"> <span> <i class="fa-solid fa-eye"></i> </span>${cardDetail.total_view}</p>
+
+                           <div class="d-flex d-md-none">
+
+
+                                <p class="me-auto"> <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i> 
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half"></i>
+                                </p>
+                                
+                                <a class="ms-auto " href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                                    
+                                
                             </div>
 
-                            <p> <span> <i class="fa-solid fa-eye"></i> </span>${cardDetail.total_view}</p>
-
-                            <p > <i class="fa-solid fa-star"></i>
+                            <p class=" d-none d-md-block"> 
+                                <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i> 
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star-half"></i>
                             </p>
 
-                            <p><i class="fa-solid text-danger fa-arrow-right"></i></p>
+                            <a class=" d-none d-md-block" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                                    
                     </div>
                 </div>
 
