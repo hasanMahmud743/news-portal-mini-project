@@ -1,12 +1,3 @@
-// page link
-document.getElementById('blog-btn').addEventListener('click', function(){
-    window.location.href = "http://127.0.0.1:5500/blog.html#" 
-})
-
-document.getElementById('news-btn').addEventListener('click', function(){
-    window.location.href = "http://127.0.0.1:5500/index.html#" 
-})
-
 
 const news = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
