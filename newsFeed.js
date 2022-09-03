@@ -5,8 +5,10 @@ const news = () =>{
 }
 
 const catagory = datas =>{
+    // console.log(datas.category_name)
+
     for(const data of datas){
-        // console.log(data)
+        console.log(data.category_name)
         const heading = document.getElementById('news-heading')
         // console.log(heading)
         const creatDiv = document.createElement('a')
@@ -18,6 +20,8 @@ const catagory = datas =>{
         heading.appendChild(creatDiv)
     }
 }
+
+
 news()
 
 
@@ -40,14 +44,22 @@ myclick('01')
 
 const cardFeture = (cardDetails) =>{
     
-    console.log(cardDetails)
+    console.log(cardDetails.length)
+
+    const notification = document.getElementById('qty')
+    notification.innerText = cardDetails.length
+
     const warning = document.getElementById('warning')
+     
     if(cardDetails.length === 0){
       warning.classList.remove('d-none')
+
     } else{
         warning.classList.add('d-none')
     }
 
+
+    
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
 
@@ -86,7 +98,7 @@ const cardFeture = (cardDetails) =>{
 
                 <div class="col-md-7 mt-4 mt-md-auto">
                         <h4 class="fw-bold"> ${cardDetail.title} </h4>
-                        <p> ${join} ...</p>
+                        <p class="text-muted"> ${join} ...</p>
 
 
                         <div class="d-flex flex-column  flex-md-row pt-4 justify-content-between" >
@@ -126,7 +138,7 @@ const cardFeture = (cardDetails) =>{
                                 <i class="fa-solid fa-star-half"></i>
                             </p>
 
-                            <a class=" d-none d-md-block" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
+                            <a class=" d-none d-md-block " data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"> <i class="fa-solid text-danger  fa-arrow-right border fw-bold p-1 rounded-circle"></i></a>
                                     
                     </div>
                 </div>
