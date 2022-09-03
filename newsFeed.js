@@ -106,13 +106,13 @@ const cardFeture = (cardDetails) =>{
                                 <img class="author-img mx-3" src="${cardDetail.author.img}" alt="">
 
                                 <div class="lh-sm">
-                                    <p class="lh-1 fw-bold">${cardDetail.author.name}</p>
+                                    <p class="lh-1 fw-bold">${cardDetail.author?.name || 'No Author Found'}</p>
                                     <p class="lh-1">${cardDetail.author.published_date}</p>
                                 </div>
                             
                             </div >
 
-                            <p class="text-center"> <span> <i class="fa-solid fa-eye"></i> </span>${cardDetail.total_view}</p>
+                            <p class="text-center"> <span> <i class="fa-solid fa-eye"></i> </span>${cardDetail?.total_view || 'No Views'}</p>
 
                            <div class="d-flex d-md-none">
 
