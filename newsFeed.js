@@ -8,34 +8,56 @@ const catagory = datas =>{
     for(const data of datas){
         // console.log(data)
         const heading = document.getElementById('news-heading')
+        // console.log(heading)
         const creatDiv = document.createElement('a')
+        const ternary = data.category_id || 01
         creatDiv.innerHTML = `
-        <a class="catagory-link" onclick="myclick('${data.category_id}')" href="#"> ${data.category_name} </a>
+        <a class="catagory-link" onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
         `
+       
         heading.appendChild(creatDiv)
     }
 }
-
 news()
 
 
+
+
 const myclick = (catId) =>{
+    spinner(true)
     // console.log(catId)
 
     fetch(`https://openapi.programming-hero.com/api/news/category/${catId}`)
     .then(res => res.json())
     .then(data => cardFeture(data.data))
-
+    
 }
+spinner(true)
+
+
+myclick('01')
 
 
 const cardFeture = (cardDetails) =>{
+    
     // console.log(cardDetails)
 
     const cardId = document.getElementById('card-id')
     cardId.innerHTML = ''
+    let emArr = []
+
+    // for(total of cardDetails){
+    //     emArr.push(total.total_view) 
+    // }
+    // emArr.sort((a,b) => b-a)
+    
+    // console.log(emArr)
     for(const cardDetail of cardDetails){
-        console.log(cardDetail)
+        // const sort = cardDetail.total_view.sort((a,b)=> b-a)
+        // console.log(sort)
+    
+        
+        
 
         
 
@@ -45,7 +67,9 @@ const cardFeture = (cardDetails) =>{
         const short = shortArr.slice(0, 40)
         const join = short.join(' ')
 
-        console.log(join)
+
+
+        // console.log(join)
         creat.innerHTML = `
         <div class="card rounded-3 my-5 p-4">
              <div class="row">
@@ -55,7 +79,7 @@ const cardFeture = (cardDetails) =>{
 
                 <div class="col-md-7">
                         <h4 class="fw-bold"> ${cardDetail.title} </h4>
-                        <p> ${join} ....</p>
+                        <p> ${join} ...</p>
 
 
                         <div class="d-flex pt-4 justify-content-between" >
@@ -91,6 +115,23 @@ const cardFeture = (cardDetails) =>{
 
         cardId.appendChild(creat)
     }
+    spinner(false)
 }
 
-cardFeture()
+
+
+
+
+function spinner(isSpinnig){
+    const spinner = document.getElementById('spinner')
+
+    if(isSpinnig){
+        spinner.classList.remove('d-none')
+    } else{
+        spinner.classList.add('d-none')
+    }
+} 
+
+spinner(true)
+
+// cardFeture()
