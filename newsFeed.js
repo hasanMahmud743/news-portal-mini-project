@@ -74,9 +74,8 @@ const cardFeture = (cardDetails) =>{
     for(const cardDetail of cardDetails){
         // const sort = cardDetail.total_view.sort((a,b)=> b-a)
         // console.log(sort)
+        console.log(cardDetail)
     
-        
-        
 
         
 
@@ -86,7 +85,7 @@ const cardFeture = (cardDetails) =>{
         const short = shortArr.slice(0, 40)
         const join = short.join(' ')
 
-
+        
 
         // console.log(join)
         creat.innerHTML = `
@@ -148,8 +147,16 @@ const cardFeture = (cardDetails) =>{
 
          </div>
         `
+        const modalBody = document.getElementById('modal-body')
+        modalBody.innerText = `ID : ${cardDetail._id}`
+
+        const modalTitle = document.getElementById('modal-id')
+        modalTitle.innerText  = ` Title: ${cardDetail.title}`
+        
 
         cardId.appendChild(creat)
+
+      
     }
     spinner(false)
 }
