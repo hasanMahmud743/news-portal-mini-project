@@ -1,3 +1,16 @@
+
+document.getElementById('blog-btn').addEventListener('click', function(){
+    window.location.href = "http://127.0.0.1:5500/blog.html#" 
+})
+
+document.getElementById('news-btn').addEventListener('click', function(){
+    window.location.href = "http://127.0.0.1:5500/index.html#" 
+})
+
+
+
+
+
 const news = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
@@ -14,7 +27,7 @@ const catagory = datas =>{
         const creatDiv = document.createElement('a')
         const ternary = data.category_id || 01
         creatDiv.innerHTML = `
-        <a class="catagory-link" onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
+        <a class="catagory-link" onclick="colorClick()" onclick="myclick('${ternary}')" href="#"> ${data.category_name} </a>
         `
        
         heading.appendChild(creatDiv)
@@ -111,7 +124,7 @@ const cardFeture = (cardDetails) =>{
 
                                 <div class="lh-sm">
                                     <p class="lh-1 fw-bold">${cardDetail.author?.name || 'No Author found'}</p>
-                                    <p class="lh-1">${cardDetail.author.published_date}</p>
+                                    <p class="lh-1">${cardDetail.author?.published_date || 'No date found'}</p>
                                 </div>
                             
                             </div >
